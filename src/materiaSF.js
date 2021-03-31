@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './dados-abertos-sf.css';
-import { Jumbotron, Alert, Card, Image } from 'react-bootstrap';
+import { Alert, Card, Image } from 'react-bootstrap';
 import axios from 'axios';
 
 function MateriaSF(props) {
@@ -38,7 +38,7 @@ function MateriaSF(props) {
 
   return (
     <div>
-      <h3>Dados abertos SF</h3>
+      <h3 className="text-center">Dados abertos Senado Federal</h3>
       <Alert variant="danger" show={false}>
         Erro obtendo dados, tente novamente.
       </Alert>
@@ -48,38 +48,45 @@ function MateriaSF(props) {
             <Card.Title>
               <div class="row">
                 <div class="col-sm-6 text-right">
-                  <h3>{materia}</h3>
+                  <h4>{materia}</h4>
                 </div>
                 <div class="col-sm-6 text-right">
                   <span className={tramitando === "Em tramitação" ?
                     'bg-success badge text-white' : 'bg-danger badge text-white' }
-                    style={{padding:'3px'}}>
+                    style={{padding:'3px', margin:'5px'}}>
                     {tramitando} 
                   </span> 
                 </div>
               </div>
             </Card.Title>
             <Card.Text>
-              <Jumbotron>
-                <div class="row">
-                  <div class="col-sm-10">
-                    <h5 className="text-center">Ementa</h5>
-                    {ementa}
-                  </div>
-                  <div class="col-sm-2 text-center">
-                    <h5>Autor</h5>
-                    <div class="row">
-                      <div class="col-sm-4">
-                      <Image src={urlFotoAutor} width="100%" rounded></Image>
-                      </div>
-                      <div class="col-sm-8 text-left">
-                        {autor}
-                      </div>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <h5 className="text-center">Ementa</h5>
+                    </div>
+                    <div class="col-sm-10">
+                      {ementa}
                     </div>
                   </div>
                 </div>
-              </Jumbotron>
+                <div class="col-sm-2 text-center">
+                  <h5>Autor</h5>
+                  <div class="row">
+                    <div class="col-sm-4">
+                    <Image src={urlFotoAutor} width="100%" rounded></Image>
+                    </div>
+                    <div class="col-sm-8 text-left">
+                      {autor}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Card.Text>
+            <Card.Footer>
+              
+            </Card.Footer>
           </Card.Body>
         </Card>
       </div>
