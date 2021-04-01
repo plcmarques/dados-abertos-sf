@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './dados-abertos-sf.css';
-import { Alert, Card, Image } from 'react-bootstrap';
+import { Alert, Image } from 'react-bootstrap';
 import axios from 'axios';
 
 function MateriaSF(props) {
@@ -43,52 +43,38 @@ function MateriaSF(props) {
         Erro obtendo dados, tente novamente.
       </Alert>
       <div>
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              <div class="row">
-                <div class="col-sm-6 text-right">
-                  <h4>{materia}</h4>
-                </div>
-                <div class="col-sm-6 text-right">
-                  <span className={tramitando === "Em tramitação" ?
-                    'bg-success badge text-white' : 'bg-danger badge text-white' }
-                    style={{padding:'3px', margin:'5px'}}>
-                    {tramitando} 
-                  </span> 
-                </div>
+        <div className="row">
+          <div className="col-sm-6 text-center">
+            <h4>{materia}</h4>
+          </div>
+          <div className="col-sm-6 text-center">
+            <span className={tramitando === "Em tramitação" ?
+              'bg-success badge text-white mr-4' : 'bg-danger badge text-white' }
+              style={{padding:'3px'}}>
+              {tramitando} 
+            </span> 
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-9">
+            <div className="row">
+              <div className="col-sm-2 text-center">
+                Ementa
               </div>
-            </Card.Title>
-            <Card.Text>
-              <div class="row">
-                <div class="col-sm-10">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <h5 className="text-center">Ementa</h5>
-                    </div>
-                    <div class="col-sm-10">
-                      {ementa}
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 text-center">
-                  <h5>Autor</h5>
-                  <div class="row">
-                    <div class="col-sm-4">
-                    <Image src={urlFotoAutor} width="100%" rounded></Image>
-                    </div>
-                    <div class="col-sm-8 text-left">
-                      {autor}
-                    </div>
-                  </div>
-                </div>
+              <div className="col-sm-10">
+                {ementa}
               </div>
-            </Card.Text>
-            <Card.Footer>
-              
-            </Card.Footer>
-          </Card.Body>
-        </Card>
+            </div>
+          </div>
+          <div className="col-sm-3 text-center">
+              <div className="text-center">
+                Autor: {autor}
+              </div>
+              <div className="text-center">
+                <Image src={urlFotoAutor} width="25%" rounded></Image>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   );
